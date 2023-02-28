@@ -17,6 +17,20 @@ class CategoryListView(generic.ListView):
        qs=super().get_queryset(*args, **kwargs)
        return qs
 
+
+class CategoryView(View):
+    def get(self, request, slug, *args, **kwargs):
+        category = get_object_or_404(EventCategory, slug=slug)
+
+        return render(
+                request, "category.html",
+                {
+                    "category": category,
+                },)
+
+
+
+
 class CalendarView(View):
     def get(self, request, year, month):
         month = month.capitalize()
