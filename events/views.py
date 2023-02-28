@@ -8,10 +8,10 @@ from datetime import datetime
 
 # Create your views here.
 
-class HomeView(View):
-    def get(self, request, *args, **kwargs):
-        return render(request, 'base.html')
-#class EventView(View):
+class EventList(generic.ListView):
+    queryset = EventInstance.objects.filter(status=1).order_by('-created_on')
+    template_name = "index.html"
+    paginate_by = 6
 
 
 class CalendarView(View):

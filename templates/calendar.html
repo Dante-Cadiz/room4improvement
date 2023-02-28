@@ -1,2 +1,4 @@
 {% extends 'base.html' %}
-{{ calendar|safe }}
+{% block content %}
+<div class="calendar">{{ calendar|safe }}</div>
+{% endblock %}

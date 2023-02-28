@@ -1,0 +1,52 @@
+body {
+    font-family: 'Work Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Anton', sans-serif;
+    letter-spacing: 0.1em;
+}
+
+nav, footer {
+    background-color: #00008B;
+
+}
+
+footer {
+    font-size: small;
+}
+
+textarea {
+    height: 75px;
+    width: 80%;
+}
+
+.edit-user-comment-wrapper {
+    display: none;
+}
+
+
+.nav-link {
+    color: #fff
+}
+
+.nav-link:hover,
+.nav-link:active {
+    color: inherit;
+    text-decoration: underline;
+}
+
+.calendar > table {
+    margin: auto;
+}
+
+@media screen and (min-width: 600px) {
+    h1 {
+        font-size: 78px;
+    }
+
+    #navbarLinks {
+        display: flex;
+        justify-content: end;
+    }
+}
