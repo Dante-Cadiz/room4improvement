@@ -8,9 +8,14 @@ from datetime import datetime
 
 # Create your views here.
 
-class EventList(generic.ListView):
-    queryset = EventCategory.objects.all()
+class CategoryListView(generic.ListView):
+    context_object_name = "category_list"
+    model = EventCategory
     template_name = "index.html"
+
+    def get_queryset(self,*args,**kwargs):
+       qs=super().get_queryset(*args, **kwargs)
+       return qs
 
 class CalendarView(View):
     def get(self, request, year, month):

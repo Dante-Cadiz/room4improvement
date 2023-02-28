@@ -4,9 +4,11 @@ from .models import EventCategory, EventInstance
 # Register your models here.
 
 @admin.register(EventCategory)
-class EventInstanceAdmin(admin.ModelAdmin):
+class EventCategoryAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',)}
     pass
 
 @admin.register(EventInstance)
 class EventInstanceAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('title',)}
     pass

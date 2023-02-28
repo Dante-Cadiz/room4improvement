@@ -14,6 +14,9 @@ class EventCategory(models.Model):
     class Meta:
         verbose_name_plural = "event_categories"
     
+    def __str__(self):
+        return self.name
+    
 
 class EventInstance(models.Model):
     title = models.CharField(max_length=100)
