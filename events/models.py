@@ -4,13 +4,16 @@ from users.models import SiteUser, Admin
 # Create your models here.
 
 STATUS = ((0, 'Draft'), (1, 'Upcoming'), (2, 'Past'))
-
 TIMETABLE = ()
 
-#class Timeslot(models.Model):
-    
-    #max_events = 
+class EventCategory(models.Model):
+    name = models.CharField(max_length=100)
+    content = models.TextField()
+    slug = models.SlugField(max_length=100)
 
+    class Meta:
+        verbose_name_plural = "event_categories"
+    
 
 class EventInstance(models.Model):
     title = models.CharField(max_length=100)
@@ -22,6 +25,8 @@ class EventInstance(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     max_attendees = models.IntegerField(null=True)
     start_time = models.DateTimeField(choices=TIMETABLE)
+    category = models.ForeignKey(EventCategory, on_delete=models.CASCADE,
+             related_name="events", null=True)
     # set start time based on selected timetable object
     duration = models.DurationField(null=True) #in minutes
     attendees = models.ManyToManyField(SiteUser, blank=True)

@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from .models import EventInstance
+from .models import EventCategory, EventInstance
 import calendar as cal
 from calendar import HTMLCalendar
 from datetime import datetime
@@ -9,10 +9,8 @@ from datetime import datetime
 # Create your views here.
 
 class EventList(generic.ListView):
-    queryset = EventInstance.objects.filter(status=1).order_by('-created_on')
+    queryset = EventCategory.objects.all()
     template_name = "index.html"
-    paginate_by = 6
-
 
 class CalendarView(View):
     def get(self, request, year, month):
