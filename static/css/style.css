@@ -21,6 +21,13 @@ textarea {
     width: 80%;
 }
 
+.mon, .tue, .wed, .thu, .fri, .sat, .sun {
+    padding: 15px;
+    background-color: #5CCCFF;
+    border: 1px solid white;
+    border-color: white;
+  }
+
 .edit-user-comment-wrapper {
     display: none;
 }
@@ -36,9 +43,20 @@ textarea {
     text-decoration: underline;
 }
 
-.calendar > table {
+
+.month {
     margin: auto;
+    border: 5px solid #00008B;
+    border-radius: 10px;
 }
+
+.sat, .sun {
+    background-color: #5CCCFF;
+}
+
+.today
+
+.event
 
 @media screen and (min-width: 600px) {
     h1 {
