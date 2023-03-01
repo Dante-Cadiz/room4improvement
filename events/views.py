@@ -32,5 +32,6 @@ class CategoryView(View):
                 {
                     "category": category,
                     "calendar": calendar,
+                    'events': events,
                 },)
 

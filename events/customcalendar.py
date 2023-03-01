@@ -27,11 +27,12 @@ class EventCalendar(HTMLCalendar):
         return super(EventCalendar, self).formatmonth(year, month)
 
     def group_by_day(self, events):
-        pass
-        #field = event
-        #return dict(
-            #[(day, list(items)) for day, items in groupby(events, field)]
-        #)
+        field = lambda event: event.date
+        return dict(
+            [(day, list(items)) for day, items in groupby(events, field)]
+        )
+        # if event is on given day, group it into day's events
+        # javascript for on click/on hover for labelled elements to show events + booking form
     
     def day_cell(self, cssclass, body):
         return '<td class="%s">%s</td>' % (cssclass, body)
