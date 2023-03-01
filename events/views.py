@@ -3,7 +3,7 @@ from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import EventCategory, EventInstance
 import calendar as cal
-from calendar import HTMLCalendar
+from .customcalendar import EventCalendar
 from datetime import datetime
 
 # Create your views here.
@@ -24,7 +24,8 @@ class CategoryView(View):
         now = datetime.now()
         current_year = now.year
         current_month = now.month
-        calendar = HTMLCalendar().formatmonth(current_year, current_month)
+        events = EventInstance.objects.all()
+        calendar = EventCalendar(events).formatmonth(current_year, current_month)
 
         return render(
                 request, "category.html",
