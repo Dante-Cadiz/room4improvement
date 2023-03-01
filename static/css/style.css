@@ -28,6 +28,10 @@ textarea {
     border-color: white;
   }
 
+.today {
+    background-color: red;
+}
+
 .edit-user-comment-wrapper {
     display: none;
 }

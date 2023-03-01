@@ -10,8 +10,13 @@ class EventCalendar(HTMLCalendar):
         super(EventCalendar, self).__init__()
         self.events = self.group_by_day(events)
     
-    #def formatday(self, day, weekday):
-        #if EventInstance
+    def formatday(self, day, weekday):
+        if day != 0:
+            cssclass = self.cssclasses[weekday]
+            if date.today() == date(self.year, self.month, day):
+                cssclass += ' today'
+            return self.day_cell(cssclass, day)
+        return self.day_cell('noday', '&nbsp;')
     # give first tr css class of .weekdays
     # add clickable/hoverable elements based on class
     # 
@@ -27,5 +32,8 @@ class EventCalendar(HTMLCalendar):
         #return dict(
             #[(day, list(items)) for day, items in groupby(events, field)]
         #)
+    
+    def day_cell(self, cssclass, body):
+        return '<td class="%s">%s</td>' % (cssclass, body)
 
 
