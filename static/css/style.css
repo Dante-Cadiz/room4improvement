@@ -21,15 +21,15 @@ textarea {
     width: 80%;
 }
 
-.mon, .tue, .wed, .thu, .fri, .sat, .sun {
-    padding: 15px;
-    background-color: #5CCCFF;
-    border: 1px solid white;
-    border-color: white;
+.day {
+    padding: 20px;
+    background-color: lightblue;
+    border: 2px solid #f7f7f7 ;
+    border-radius: 10px;
   }
 
 .today {
-    background-color: red;
+    background-color: lightcoral;
 }
 
 .edit-user-comment-wrapper {
@@ -47,20 +47,25 @@ textarea {
     text-decoration: underline;
 }
 
+td { text-align: center;}
 
-.month {
-    margin: auto;
+table {
+    border-collapse: separate !important;
+    padding: 10px;
+    margin: 10px auto;
     border: 5px solid #00008B;
     border-radius: 10px;
 }
 
-.sat, .sun {
+th {
+    
+}
+
+.sat .day, .sun .day{
     background-color: #5CCCFF;
 }
 
-.today
 
-.event
 
 @media screen and (min-width: 600px) {
     h1 {
