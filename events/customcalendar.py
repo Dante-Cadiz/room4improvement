@@ -19,9 +19,9 @@ class EventCalendar(HTMLCalendar):
             if date.today() == date(self.year, self.month, day):
                 cssclass += ' today'
             popup = ['<div class="popup">']
-            if day in self.events:
-                for event in self.events:
-                    popup.append(str(event))
+            for e in self.events:
+                if e.date == date(self.year, self.month, day):
+                    popup.append(str(e))
             popup.append('</div>')
             
             return self.day_cell(cssclass, '%d %s' % (day, ''.join(popup)))
