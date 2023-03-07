@@ -14,11 +14,14 @@ class EventCalendar(HTMLCalendar):
         if day != 0:
             cssclass = self.cssclasses[weekday]
             cssclass += ' day'
+            if date.today() > date(self.year, self.month, day):
+                cssclass += ' past'
             if date.today() == date(self.year, self.month, day):
                 cssclass += ' today'
             popup = ['<div class="popup">']
-            for event in self.events:
-                popup.append(str(event))
+            if day in self.events:
+                for event in self.events:
+                    popup.append(str(event))
             popup.append('</div>')
             
             return self.day_cell(cssclass, '%d %s' % (day, ''.join(popup)))
@@ -34,7 +37,7 @@ class EventCalendar(HTMLCalendar):
 
     def group_by_day(self, events):
         return dict(
-            [(day, list(items)) for day, items in groupby(events)]
+            [(date, list(items)) for date, items in groupby(events)]
         )
         # if event is on given day, group it into day's events
         # javascript for on click/on hover for labelled elements to show events + booking form

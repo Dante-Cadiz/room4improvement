@@ -28,6 +28,10 @@ textarea {
     border-radius: 10px;
   }
 
+.past {
+    background-color: lightgrey;
+}
+
 .today {
     background-color: lightcoral;
 }

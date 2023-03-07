@@ -45,4 +45,5 @@ class EventInstance(models.Model):
         start = self.start_time.strftime("%H:%M")
         return f"{self.title}: {start}"
 
+ ## get_absolute_url method
     
