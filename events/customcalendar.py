@@ -16,7 +16,11 @@ class EventCalendar(HTMLCalendar):
             cssclass += ' day'
             if date.today() == date(self.year, self.month, day):
                 cssclass += ' today'
-            popup = ['<div class="popup"></div>']
+            popup = ['<div class="popup">']
+            for event in self.events:
+                popup.append(str(event))
+            popup.append('</div>')
+            
             return self.day_cell(cssclass, '%d %s' % (day, ''.join(popup)))
         return self.day_cell('noday', '&nbsp;')
     # give first tr css class of .weekdays

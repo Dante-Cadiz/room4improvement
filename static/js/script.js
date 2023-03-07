@@ -10,6 +10,6 @@ $(".day").hover(
     }
 );
 
-$(".day").click(function () {
-    $flag = 1;
+$(".popup").click(function () {
+    $('this').attr("style", "display:block");
 });
