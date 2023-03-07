@@ -25,7 +25,7 @@ class CategoryView(View):
         now = datetime.now()
         current_year = now.year
         current_month = now.month
-        events = EventInstance.objects.all()
+        events = EventInstance.objects.filter(category=category)
         calendar = EventCalendar(events).formatmonth(current_year, current_month)
 
         ## group event instances by day here
