@@ -31,7 +31,8 @@ class CategoryView(View):
                 request, "category.html",
                 {
                     "category": category,
-                    "calendar": calendar,
                     'events': events,
+                    "calendar": calendar,
                 },)
+
 

@@ -1,11 +1,15 @@
-$(".day").mouseenter(function(e){
-    
+$flag = -1;
+$(".day").hover(
+    function () {
+        $(".popup", this).attr("style", "display:block");
+    },
+    function () {
+        if ($flag == -1) {
+            $(".popup", this).attr("style", "display:none");
+        }
+    }
+);
 
-    
-});
-
-$(".day").click(function(e){
-    
-
-    
+$(".day").click(function () {
+    $flag = 1;
 });
