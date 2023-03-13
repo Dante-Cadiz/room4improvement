@@ -18,7 +18,6 @@ class CategoryListView(generic.ListView):
        return qs
 
 
-
 class CategoryView(View):
     def get(self, request, slug, *args, **kwargs):
         category = get_object_or_404(EventCategory, slug=slug)
@@ -28,9 +27,6 @@ class CategoryView(View):
         events = EventInstance.objects.filter(category=category)
         calendar = EventCalendar(events).formatmonth(current_year, current_month)
 
-        ## group event instances by day here
-        ## for event in events days = event.days
-
         return render(
                 request, "category.html",
                 {
@@ -39,4 +35,8 @@ class CategoryView(View):
                     "calendar": calendar,
                 },)
 
+#class BookingView(View):
+    #def get(self, request, slug, *args, **kwargs):
+
+    #def post(self, request, slug, *args, **kwargs):
 

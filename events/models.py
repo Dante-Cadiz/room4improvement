@@ -46,4 +46,9 @@ class EventInstance(models.Model):
         return f"{self.title}: {start}"
 
  ## get_absolute_url method
-    
+
+class Booking(models.Model):
+    event = models.ForeignKey(EventInstance, on_delete=models.CASCADE,
+                              related_name='event', blank=True)
+    booker = models.ForeignKey(SiteUser, on_delete=models.CASCADE,
+                               related_name='booker', blank=True)

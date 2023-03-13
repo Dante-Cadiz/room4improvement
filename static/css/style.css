@@ -57,9 +57,10 @@ table {
     border-collapse: separate !important;
     padding: 10px;
     margin: 10px auto;
-    border: 5px solid #00008B;
-    border-radius: 10px;
+    border: 1px solid #00008B;
+    border-radius: 5px;
 }
+
 
 .popup {
     display: none;
@@ -68,14 +69,17 @@ table {
     background-color: #f7f7f7;
     width: 200px;
     height: 120px;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .sat .day, .sun .day{
     background-color: #5CCCFF;
 }
 
-
+.next {
+    display: inline;
+    float: right;
+}
 
 @media screen and (min-width: 600px) {
     h1 {
