@@ -35,8 +35,14 @@ class CategoryView(View):
                     "calendar": calendar,
                 },)
 
-#class BookingView(View):
-    #def get(self, request, slug, *args, **kwargs):
+class MakeBooking(View):
 
-    #def post(self, request, slug, *args, **kwargs):
+    def post(self, request, slug, *args, **kwargs):
+        instances = EventInstance.objects.all()
+        instance = get_object_or_404(instance, id=self.kwargs['pk'])
+        instance.attendees.add(request.user)
+        Booking.objects.create(booker=self.request.user, instance=instance)
+        messages.add_message(request, messages.SUCCESS,
+                             "Event successfully booked")
+        return HttpResponseRedirect(reverse('event', args=[slug]))
 

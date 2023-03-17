@@ -22,6 +22,7 @@ class EventCalendar(HTMLCalendar):
             for e in self.events:
                 if e.date == date(self.year, self.month, day):
                     popup.append(str(e))
+                    popup.append('<div><a href=>Book</a></div>')
             popup.append('</div>')
             
             return self.day_cell(cssclass, '%d %s' % (day, ''.join(popup)))
