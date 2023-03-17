@@ -40,9 +40,10 @@ class MakeBooking(View):
     def post(self, request, slug, *args, **kwargs):
         instances = EventInstance.objects.all()
         instance = get_object_or_404(instance, id=self.kwargs['pk'])
+        category = get_object_or_404(slug=slug)
         instance.attendees.add(request.user)
-        Booking.objects.create(booker=self.request.user, instance=instance)
+        Booking.objects.create(category=category, booker=self.request.user, instance=instance)
         messages.add_message(request, messages.SUCCESS,
                              "Event successfully booked")
-        return HttpResponseRedirect(reverse('event', args=[slug]))
+        return HttpResponseRedirect(reverse('category', args=[slug]))
 

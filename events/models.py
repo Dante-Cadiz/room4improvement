@@ -52,3 +52,5 @@ class Booking(models.Model):
                               related_name='event', blank=True)
     booker = models.ForeignKey(SiteUser, on_delete=models.CASCADE,
                                related_name='booker', blank=True)
+    category = models.ForeignKey(EventCategory, on_delete=models.CASCADE,
+    related_name="category", blank=True)
