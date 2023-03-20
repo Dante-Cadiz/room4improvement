@@ -17,6 +17,9 @@ class CategoryListView(generic.ListView):
        qs=super().get_queryset(*args, **kwargs)
        return qs
 
+class MyBookingsView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'my_bookings.html')
 
 class CategoryView(View):
     def get(self, request, slug, *args, **kwargs):
