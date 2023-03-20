@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'events',
-    'users'
+    'django.contrib.staticfiles',
 ]
 
 MIDDLEWARE = [

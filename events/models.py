@@ -1,5 +1,5 @@
 from django.db import models
-from users.models import SiteUser, Admin
+from django.contrib.auth.models import User
 from datetime import datetime, timedelta
 
 # Create your models here.
@@ -24,8 +24,8 @@ class EventInstance(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField()
     slug = models.SlugField(max_length=100)
-    #author = models.ForeignKey(Admin, on_delete=models.RESTRICT,
-                               #related_name="events", null=True)
+    author = models.ForeignKey(User, on_delete=models.RESTRICT,
+                               related_name="events", null=True)
     #featured_image = CloudinaryField('image', default='placeholder')
     created_on = models.DateTimeField(auto_now_add=True)
     max_attendees = models.IntegerField(null=True)
@@ -34,7 +34,7 @@ class EventInstance(models.Model):
     category = models.ForeignKey(EventCategory, on_delete=models.CASCADE,
              related_name="events", null=True)
     duration = models.DurationField(default=timedelta()) #in minutes
-    attendees = models.ManyToManyField(SiteUser, blank=True)
+    attendees = models.ManyToManyField(User, blank=True)
     status = models.IntegerField(choices=STATUS, default=0)
 
     def determine_end_time(self):
@@ -50,7 +50,7 @@ class EventInstance(models.Model):
 class Booking(models.Model):
     event = models.ForeignKey(EventInstance, on_delete=models.CASCADE,
                               related_name='event', blank=True)
-    booker = models.ForeignKey(SiteUser, on_delete=models.CASCADE,
+    booker = models.ForeignKey(User, on_delete=models.CASCADE,
                                related_name='booker', blank=True)
     category = models.ForeignKey(EventCategory, on_delete=models.CASCADE,
     related_name="category", blank=True)

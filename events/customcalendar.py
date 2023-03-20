@@ -24,7 +24,7 @@ class EventCalendar(HTMLCalendar):
                     popup.append(str(e))
                     popup.append("<form action='{% url 'make_booking' category.slug instance.id %}' method='POST'>")
                     popup.append("{% csrf_token %}")
-                    popup.append("<button type='submit' class='btn btn-primary'>{{ event }} - Book</button>")
+                    popup.append("<button type='submit' class='btn btn-primary'>{{ e }} - Book</button>")
                     popup.append("</form>")
             popup.append('</div>')
             
