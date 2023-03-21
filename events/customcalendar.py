@@ -22,10 +22,7 @@ class EventCalendar(HTMLCalendar):
             for e in self.events:
                 if e.date == date(self.year, self.month, day):
                     popup.append(str(e))
-                    popup.append("<form action='{% url make_booking category.slug instance.id %}' method='POST'>")
-                    popup.append("{% csrf_token %}")
-                    popup.append("<button type='submit' class='btn btn-primary'>{{ e }} - Book</button>")
-                    popup.append("</form>")
+                    popup.append("<button type='button' class='btn btn-primary formbtn' data-bs-toggle='modal' data-bs-target='#exampleModal'>Launch demo modal</button>")
             popup.append('</div>')
             
             return self.day_cell(cssclass, '%d %s' % (day, ''.join(popup)))

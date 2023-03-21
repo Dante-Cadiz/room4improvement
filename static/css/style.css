@@ -72,6 +72,11 @@ table {
     border-radius: 5px;
 }
 
+.formbtn {
+    height: 100%;
+    width: 100%;
+}
+
 .sat .day, .sun .day{
     background-color: #5CCCFF;
 }
