@@ -5,6 +5,7 @@ from .models import EventCategory, EventInstance
 import calendar as cal
 from .customcalendar import EventCalendar
 from datetime import datetime
+from .forms import BookingForm
 
 # Create your views here.
 
@@ -41,11 +42,17 @@ class CategoryView(View):
 class MakeBooking(View):
 
     def post(self, request, slug, *args, **kwargs):
+        form = BookingForm(request.POST, instance=booking)
+        if form.is_valid():
+            booking = form.save()
+            
+
+
         instances = EventInstance.objects.all()
         instance = get_object_or_404(instance, id=self.kwargs['pk'])
         category = get_object_or_404(slug=slug)
         instance.attendees.add(request.user)
-        Booking.objects.create(category=category, booker=self.request.user, instance=instance)
+        Booking.objects.create()
         messages.add_message(request, messages.SUCCESS,
                              "Event successfully booked")
         return HttpResponseRedirect(reverse('category', args=[slug]))
